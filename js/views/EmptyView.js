@@ -9,11 +9,13 @@ define(function(require, exports, module) {
 
     var EmptyCollection = require('collections/EmptyCollection');
     var EmptyListView = require('views/EmptyListView');
+    var EmptyComponent = require('views/ui/EmptyComponent');
 
     function EmptyView(options) {
         View.apply(this, arguments);
         this._createModels.call(this);
         this._createViews.call(this);
+        this._createComponents.call(this);
         this._setModelListeners.call(this);
         this._setViewListeners.call(this);
         this._fetch.call(this)
@@ -43,6 +45,13 @@ define(function(require, exports, module) {
         this.listView = new EmptyListView({collection: this.collection});
         this.add(this.lightbox);
         this.lightbox.show(this.listView);
+    };
+
+    EmptyView.prototype._createComponents = function(){
+        this.box = new EmptyComponent({
+
+        });
+        this.add(this.box); console.log('hihihi');
     };
 
     EmptyView.prototype._setModelListeners = function(){
