@@ -51,7 +51,7 @@ define(function(require, exports, module) {
         this.box = new EmptyComponent({
 
         });
-        this.add(this.box); console.log('hihihi');
+        this.add(this.box);
     };
 
     EmptyView.prototype._setModelListeners = function(){
