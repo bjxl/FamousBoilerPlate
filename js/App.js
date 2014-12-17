@@ -7,6 +7,7 @@ define(function (require, exports, module) {
     var StateModifier = require('famous/modifiers/StateModifier');
 
     var AppView = require('views/EmptyView');
+    var CreditBox = require('views/ui/CreditBox');
 
     var mainContext = Engine.createContext();
     mainContext.setPerspective(600);
@@ -39,7 +40,14 @@ define(function (require, exports, module) {
 
     this.appView = new AppView();
     mainContext.add(this.lightbox);
-    Timer.setTimeout(function() {
-        this.lightbox.show(this.appView, {duration: 1000});
-    }.bind(this), 1000);
+    //Timer.setTimeout(function() {
+    //    this.lightbox.show(this.appView, {duration: 1000});
+    //}.bind(this), 1000);
+
+    this.creditBox = new CreditBox({
+
+    });
+    mainContext.add(this.creditBox);
+    window.creditBox = this.creditBox;
+
 });
