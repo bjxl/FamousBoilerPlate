@@ -13,15 +13,19 @@ define(function(require, exports, module) {
 
             _createUIElement.call(this);
             this.credit = 0;
-            this.duration = 200;
+            this.duration = 5;
         },
         add: function(n) {
-            _(n).times(function(i){
-                setTimeout(function() {
+            this.setScale(1.2, 1.2, 1.2, {duration:1, method: 'snap'});
+            _(n).times(function (i) {
+                setTimeout(function () {
                     this.credit++;
                     redrawDigits.call(this);
-                }.bind(this), this.duration*i);
+                }.bind(this), this.duration * i);
             }.bind(this));
+            setTimeout(function(){
+                this.setScale(1, 1, 1, {duration: 1, method: 'snap'});
+            }.bind(this), this.duration * n);
         },
         minus: function(n) {
             _(n).times(function(i){
@@ -40,8 +44,14 @@ define(function(require, exports, module) {
             if (i==creditStr.length-1) {
                 this.digitBox0.setValue(num);
             } else if (i==creditStr.length-2) {
-                this.digitBox1.setValue(num);
-            }
+                this.digitBox1.setValue(num);}
+              else if (i==creditStr.length-3) {
+                this.digitBox2.setValue(num);}
+              else if (i==creditStr.length-4) {
+                this.digitBox3.setValue(num);}
+              else if (i==creditStr.length-5) {
+                this.digitBox3.setValue(num);
+                }
         }.bind(this));
     }
 
@@ -52,24 +62,60 @@ define(function(require, exports, module) {
             align: [0.55,0.5],
             origin: [0.5,0.5],
             style: {
-                backgroundColor: 'red',
-                color: 'white',
+                backgroundColor: 'transparent',
+                color: 'gold',
                 fontSize: '100px'
             }
         });
         this.digitBox1 = new DigitBox({
             content: "box",
             size: [100, 200],
-            align: [0.45,0.5],
+            align: [0.5,0.5],
             origin: [0.5,0.5],
             style: {
-                backgroundColor: 'blue',
-                color: 'white',
+                backgroundColor: 'transparent',
+                color: 'gold',
+                fontSize: '100px'
+            }
+        });
+        this.digitBox2 = new DigitBox({
+            content: "box",
+            size: [100, 200],
+            align: [0.45, 0.5],
+            origin: [0.5, 0.5],
+            style: {
+                backgroundColor: 'transparent',
+                color: 'gold',
+                fontSize: '100px'
+            }
+        });
+        this.digitBox3 = new DigitBox({
+            content: "box",
+            size: [100, 200],
+            align: [0.4, 0.5],
+            origin: [0.5, 0.5],
+            style: {
+                backgroundColor: 'transparent',
+                color: 'gold',
+                fontSize: '100px'
+            }
+        });
+        this.digitBox4 = new DigitBox({
+            content: "box",
+            size: [100, 200],
+            align: [0.35, 0.5],
+            origin: [0.5, 0.5],
+            style: {
+                backgroundColor: 'transparent',
+                color: 'gold',
                 fontSize: '100px'
             }
         });
         this._addChild(this.digitBox0);
         this._addChild(this.digitBox1);
+        this._addChild(this.digitBox2);
+        this._addChild(this.digitBox3);
+        this._addChild(this.digitBox4);
     }
 
     module.exports = CreditBox;

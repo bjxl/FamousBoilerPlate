@@ -12,15 +12,16 @@ define(function(require, exports, module) {
             if (value!=this.value) {
                 this.value = value;
                 this.setContent(this.value);
-                this.setScale(1.2,1.2,1, {
-                    duration: 50,
-                    method: 'snap'
-                }, function() {
-                    this.setScale(1,1,1, {
-                        duration: 50,
-                        method: 'snap'
-                    });
-                }.bind(this));
+                //this.setScale(1.2,1.2,1, {
+                //    duration: 1,
+                //    method: 'snap'
+                //
+                //}, function() {
+                //    this.setScale(1,1,1, {
+                //        duration: 1,
+                //        method: 'snap'
+                //    });
+                //}.bind(this));
             }
         }
     });

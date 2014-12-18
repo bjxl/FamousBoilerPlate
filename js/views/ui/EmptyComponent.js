@@ -11,21 +11,21 @@ define(function(require, exports, module) {
                 // component properties (size, align, origin, etc)
             });
 
-            _createUIElement.call(this);
-            this.credit = 0;
-        },
-        add: function(n) {
-            _(n).times(function(i){
-                setTimeout(function() {
-                    this.box.incr();
-                }.bind(this), 100*i);
-            }.bind(this));
-            this.credit = this.credit + n;
-        },
-        minus: function(n) {
-            this.credit = this.credit - n;
-            var content = '<div>' + this.credit + '</div>';
-            this.box.setContent(content);
+    //        _createUIElement.call(this);
+    //        this.credit = 0;
+    //    },
+    //    add: function(n) {
+    //        _(n).times(function(i){
+    //            setTimeout(function() {
+    //                this.box.incr();
+    //            }.bind(this), 100*i);
+    //        }.bind(this));
+    //        this.credit = this.credit + n;
+    //    },
+    //    minus: function(n) {
+    //        this.credit = this.credit - n;
+    //        var content = '<div>' + this.credit + '</div>';
+    //        this.box.setContent(content);
         }
     });
 
