@@ -16,16 +16,16 @@ define(function(require, exports, module) {
             this.duration = 50;
         },
         add: function(n) {
-            this.setScale(1.2, 1.2, 1.2, {duration:1, method: 'snap'});
+            //this.setScale(1.2, 1.2, 1.2, {duration:1, method: 'snap'});
             _(n).times(function (i) {
                 setTimeout(function () {
                     this.credit++;
                     redrawDigits.call(this);
                 }.bind(this), this.duration * i);
             }.bind(this));
-            setTimeout(function(){
-                this.setScale(1, 1, 1, {duration: 1, method: 'snap'});
-            }.bind(this), this.duration * n);
+            //setTimeout(function(){
+            ////    this.setScale(1, 1, 1, {duration: 1, method: 'snap'});
+            ////}.bind(this), this.duration * n);
         },
         minus: function(n) {
             _(n).times(function(i){
