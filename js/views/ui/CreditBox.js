@@ -13,7 +13,7 @@ define(function(require, exports, module) {
 
             _createUIElement.call(this);
             this.credit = 0;
-            this.duration = 5;
+            this.duration = 50;
         },
         add: function(n) {
             this.setScale(1.2, 1.2, 1.2, {duration:1, method: 'snap'});
@@ -31,16 +31,25 @@ define(function(require, exports, module) {
             _(n).times(function(i){
                 setTimeout(function() {
                     this.credit--;
+                    if (this.credit<0){
+                        this.credit=0;
+                    }
                     redrawDigits.call(this);
                 }.bind(this), this.duration*i);
             }.bind(this));
         }
     });
 
+    function pad(n, width, z) {
+        z = z || ' ';
+        n = n + '';
+        return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+    }
+
     function redrawDigits() {
-        var creditStr = this.credit.toString();
+        var creditStr = pad(this.credit, 5);
+        console.log("*******",creditStr)
         _(creditStr).each(function(num, i){
-            console.log(num,i)
             if (i==creditStr.length-1) {
                 this.digitBox0.setValue(num);
             } else if (i==creditStr.length-2) {
@@ -57,7 +66,7 @@ define(function(require, exports, module) {
 
     function _createUIElement() {
         this.digitBox0 = new DigitBox({
-            content: "box",
+            content: '0',
             size: [100, 200],
             align: [0.55,0.5],
             origin: [0.5,0.5],
@@ -68,7 +77,6 @@ define(function(require, exports, module) {
             }
         });
         this.digitBox1 = new DigitBox({
-            content: "box",
             size: [100, 200],
             align: [0.5,0.5],
             origin: [0.5,0.5],
@@ -79,7 +87,6 @@ define(function(require, exports, module) {
             }
         });
         this.digitBox2 = new DigitBox({
-            content: "box",
             size: [100, 200],
             align: [0.45, 0.5],
             origin: [0.5, 0.5],
@@ -90,7 +97,6 @@ define(function(require, exports, module) {
             }
         });
         this.digitBox3 = new DigitBox({
-            content: "box",
             size: [100, 200],
             align: [0.4, 0.5],
             origin: [0.5, 0.5],
@@ -101,7 +107,6 @@ define(function(require, exports, module) {
             }
         });
         this.digitBox4 = new DigitBox({
-            content: "box",
             size: [100, 200],
             align: [0.35, 0.5],
             origin: [0.5, 0.5],
