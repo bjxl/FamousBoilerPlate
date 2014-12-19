@@ -8,6 +8,7 @@ define(function (require, exports, module) {
 
     var AppView = require('views/EmptyView');
     var CreditBox = require('views/ui/CreditBox');
+    var EmptyComponent = require('views/ui/EmptyComponent');
 
     var mainContext = Engine.createContext();
     mainContext.setPerspective(600);
@@ -49,5 +50,10 @@ define(function (require, exports, module) {
     });
     mainContext.add(this.creditBox);
     window.creditBox = this.creditBox;
+
+    this.emptyComponent = new EmptyComponent({
+
+    });
+    mainContext.add(this.emptyComponent);
 
 });
