@@ -29,7 +29,7 @@ define(function(require, exports, module) {
                     //        color: this.options.style.color
                     //    })
                     //}.bind(this));
-                    this.setPosition(0,-50,0, {
+                    this.setPosition(0,-30,0, {
                         duration: 0.1, curve:Easing.inOutElastic()},function() {
                         this.setPosition(0, 0, 0, {duration: 0.1, curve:Easing.inOutElastic()})
                     }.bind(this));
