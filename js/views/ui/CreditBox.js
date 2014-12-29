@@ -55,7 +55,7 @@ define(function(require, exports, module) {
 
     function redrawDigitsAdd() {
         var creditStr = pad(this.credit, 5);
-        console.log("*******",creditStr)
+        //console.log("*******",creditStr)
         _(creditStr).each(function(num, i){
             if (i==creditStr.length-1) {
                 this.digitBox0.setValueAdd(num);
@@ -66,14 +66,13 @@ define(function(require, exports, module) {
               else if (i==creditStr.length-4) {
                 this.digitBox3.setValueAdd(num);}
               else if (i==creditStr.length-5) {
-                this.digitBox4.setValueAdd(num);
-                this.digitBox4.setValue(num);}
+                this.digitBox4.setValueAdd(num);}
               else if (i==creditStr.length-6) {
-                this.digitBox3.setValue(num); }
+                this.digitBox5.setValueAdd(num); }
               else if (i==creditStr.length-7) {
-                this.digitBox4.setValue(num);}
+                this.digitBox6.setValueAdd(num);}
               else if (i==creditStr.length-8) {
-                this.digitBox4.setValue(num);
+                this.digitBox7.setValueAdd(num);
                 }
         }.bind(this));
     }
@@ -91,7 +90,13 @@ define(function(require, exports, module) {
             else if (i==creditStr.length-4) {
                 this.digitBox3.setValueMinus(num);}
             else if (i==creditStr.length-5) {
-                this.digitBox4.setValueMinus(num);
+                this.digitBox4.setValueMinus(num);}
+            else if (i==creditStr.length-6) {
+                this.digitBox5.setValueMinus(num);}
+            else if (i==creditStr.length-7) {
+                this.digitBox6.setValueMinus(num);}
+            else if (i==creditStr.length-8) {
+                this.digitBox7.setValueMinus(num);
             }
         }.bind(this));
     }
@@ -117,14 +122,13 @@ define(function(require, exports, module) {
             animate:true
         });
         this.digitBox2 = new DigitBox({
-            size: [100, 200],
-            align: [0.45, 0.5],
-            origin: [0.5, 0.5],
-            style: {
-                backgroundColor: 'transparent',
-                color: 'gold',
-                fontSize: '100px'
-            }
+            classes: ['digitbox'],
+            size: this.size,
+            align: this.align,
+            origin: this.origin,
+            position: [this.xPos-this.gap*2, this.yPos, this.zPos],
+            xPos: this.xPos-this.gap*2, yPos: this.yPos,
+            animate:true
         });
         this.digitBox3 = new DigitBox({
             classes: ['digitbox'],
